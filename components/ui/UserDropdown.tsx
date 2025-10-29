@@ -14,15 +14,15 @@ import { useRouter } from 'next/navigation';
 import { Button } from './button';
 import { LogOut } from 'lucide-react';
 import NavItems from './NavItems';
+import { signOut } from '@/lib/actions/auth.action';
 
-const UserDropdown = () => {
+const UserDropdown = ({user}: {user:User}) => {
     const router = useRouter();
 
     const handelSignOut = async() =>{
+        await signOut(); //Blocks going again to the localhost
         router.push("/sign-in");
     } 
-
-    const user = { name:'Bidhya', email:'bidhya@1212.com'};
 
   return (
     <DropdownMenu>
